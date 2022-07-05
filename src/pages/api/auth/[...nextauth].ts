@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth'
+import NextAuth, { DefaultSession } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import TwitterProvider from 'next-auth/providers/twitter'
 
@@ -10,6 +10,23 @@ import { prisma } from '../../../server/db/client'
 export default NextAuth({
   // Configure one or more authentication providers
   adapter: PrismaAdapter(prisma),
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        ;(session.user as any).id = token.uid
+      }
+      return session
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.uid = user.id
+      }
+      return token
+    },
+  },
+  session: {
+    strategy: 'jwt',
+  },
   providers:
     process.env.NODE_ENV === 'production'
       ? [

@@ -33,7 +33,10 @@ export const blogRouter = createRouter()
       if (session && session.user) {
         const user = await ctx.prisma.user.findFirst({
           where: {
-            email: session.user.email,
+            OR: [
+              { id: (session?.user as any)?.id },
+              { email: session?.user?.email },
+            ],
           },
         })
         userID = user?.id
@@ -98,7 +101,10 @@ export const blogRouter = createRouter()
       if (session && session.user) {
         const user = await ctx.prisma.user.findFirst({
           where: {
-            email: session.user.email,
+            OR: [
+              { id: (session?.user as any)?.id },
+              { email: session?.user?.email },
+            ],
           },
         })
         userID = user?.id
@@ -148,7 +154,10 @@ export const blogRouter = createRouter()
       }
       const user = await ctx.prisma.user.findFirst({
         where: {
-          email: session.user.email,
+          OR: [
+            { id: (session?.user as any)?.id },
+            { email: session?.user?.email },
+          ],
         },
       })
       if (!user) {
@@ -246,7 +255,10 @@ export const blogRouter = createRouter()
       }
       const user = await ctx.prisma.user.findFirst({
         where: {
-          email: session.user.email,
+          OR: [
+            { id: (session?.user as any)?.id },
+            { email: session?.user?.email },
+          ],
         },
       })
       if (!user) {

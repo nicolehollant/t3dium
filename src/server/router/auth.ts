@@ -9,7 +9,10 @@ export const authRouter = createRouter()
       const session = await getSession({ req: ctx.req })
       const user = await ctx.prisma.user.findFirst({
         where: {
-          email: session?.user?.email,
+          OR: [
+            { id: (session?.user as any)?.id },
+            { email: session?.user?.email },
+          ],
         },
       })
       if (session) {
@@ -27,9 +30,13 @@ export const authRouter = createRouter()
   .query('user', {
     async resolve({ ctx }) {
       const session = await getSession({ req: ctx.req })
+      console.log({ session })
       const user = await ctx.prisma.user.findFirst({
         where: {
-          email: session?.user?.email,
+          OR: [
+            { id: (session?.user as any)?.id },
+            { email: session?.user?.email },
+          ],
         },
       })
       if (!session || !user) {
@@ -47,15 +54,18 @@ export const authRouter = createRouter()
     }),
     async resolve({ ctx, input }) {
       const session = await getSession({ req: ctx.req })
-      if (!session || !session.user?.email) {
+      if (!session || (!session.user?.email && !(session.user as any)?.id)) {
         throw new TRPCError({
           code: 'UNAUTHORIZED',
           message: 'No active session',
         })
       }
-      const user = await ctx.prisma.user.update({
+      const user = await ctx.prisma.user.updateMany({
         where: {
-          email: session.user.email!,
+          OR: [
+            { id: (session?.user as any)?.id },
+            { email: session?.user?.email },
+          ],
         },
         data: {
           name: input.name,
