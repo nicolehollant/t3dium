@@ -38,7 +38,7 @@ const PostEditor: FC<Props> = ({
         setDidSetOwnTitle(false)
       }
     },
-    [title, didSetOwnTitle]
+    [title, didSetOwnTitle, isEditing]
   )
 
   return (

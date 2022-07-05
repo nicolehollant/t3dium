@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { generateFromString } from 'generate-avatar'
+import Image from 'next/image'
 
 const Avatar: FC<{
   image?: string | null
@@ -11,7 +12,8 @@ const Avatar: FC<{
 
   if (image) {
     return (
-      <img
+      <Image
+        alt=""
         src={image}
         className={`${
           {
@@ -24,7 +26,8 @@ const Avatar: FC<{
     )
   }
   return (
-    <img
+    <Image
+      alt=""
       src={`data:image/svg+xml;utf8,${svg}`}
       className={`${
         {
