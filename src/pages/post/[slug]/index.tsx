@@ -80,31 +80,33 @@ const ViewPost: NextPage = () => {
           </div>
         </AppHeader>
         {post.isSuccess && (
-          <article className="mx-auto max-w-prose py-12">
-            <h2 className="text-7xl">{post.data.title}</h2>
-            <p className="mt-6 ml-2 border-l-2 border-emerald-200/50 pl-4 text-lg italic text-gray-500">
-              {post.data.tagline}
-            </p>
-            <div className="mt-6 flex items-center gap-4">
-              <AuthorPreview
-                name={post.data.author.name}
-                asLink={true}
-                id={post.data.author.id!}
-                image={post.data.author.image}
-                largeName={true}
-                size="base"
+          <div className="max-w-screen mx-auto break-words py-12 px-6">
+            <article className="mx-auto max-w-prose">
+              <h2 className="text-7xl">{post.data.title}</h2>
+              <p className="mt-6 ml-2 border-l-2 border-emerald-200/50 pl-4 text-lg italic text-gray-500">
+                {post.data.tagline}
+              </p>
+              <div className="mt-6 flex items-center gap-4">
+                <AuthorPreview
+                  name={post.data.author.name}
+                  asLink={true}
+                  id={post.data.author.id!}
+                  image={post.data.author.image}
+                  largeName={true}
+                  size="base"
+                />
+                <span className="text-gray-400">&middot;</span>
+                <time className="text-sm text-gray-600">
+                  {dayjs(post.data.createTime).format('l')}
+                </time>
+              </div>
+              <hr className="my-12" />
+              <MarkdownPreview
+                className="prose prose-lg"
+                value={removeHeaderIfDuplicate(post)}
               />
-              <span className="text-gray-400">&middot;</span>
-              <time className="text-sm text-gray-600">
-                {dayjs(post.data.createTime).format('l')}
-              </time>
-            </div>
-            <hr className="my-12" />
-            <MarkdownPreview
-              className="prose prose-lg"
-              value={removeHeaderIfDuplicate(post)}
-            />
-          </article>
+            </article>
+          </div>
         )}
       </div>
     </>

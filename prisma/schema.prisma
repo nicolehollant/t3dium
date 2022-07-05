@@ -65,7 +65,7 @@ model VerificationToken {
 model Posts {
   id              String   @id @default(cuid())
   author          User     @relation(fields: [userId], references: [id])
-  content         String
+  content         String   @db.Text
   poster          String
   slug            String
   tagline         String
