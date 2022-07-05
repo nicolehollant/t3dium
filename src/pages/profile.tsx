@@ -13,7 +13,6 @@ const Profile: NextPage = () => {
   const router = useRouter()
   const user = trpc.useQuery(['auth.user'])
   const [name, setName] = useState('')
-  const [success, setSuccess] = useState(false)
   const updateUser = trpc.useMutation('auth.updateUser')
 
   const submit = async () => {
@@ -30,7 +29,6 @@ const Profile: NextPage = () => {
     if (updateUser.isSuccess) {
       toast('Updated name', {
         type: 'success',
-        // position: toast.POSITION.BOTTOM_RIGHT,
       })
     }
   }, [updateUser.isSuccess])
@@ -69,7 +67,9 @@ const Profile: NextPage = () => {
           <div className="flex items-center gap-4">
             <p className="text-lg text-gray-800/80">
               Signed in as{' '}
-              <span className="font-semibold">{user.data.email}</span>
+              <span className="font-semibold">
+                {user.data.email ?? user.data.name ?? user.data.id}
+              </span>
             </p>
             <Avatar size="sm" id={user.data.id} image={user.data.image} />
           </div>
