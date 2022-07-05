@@ -19,6 +19,7 @@ const Icons: Record<string, JSX.Element> = {
   Email: <FontAwesomeIcon icon={faPaperPlane} size="lg" />,
   GitHub: <FontAwesomeIcon icon={faGithub} size="lg" />,
   Twitter: <FontAwesomeIcon icon={faTwitter} size="lg" />,
+  'Twitter (Legacy)': <FontAwesomeIcon icon={faTwitter} size="lg" />,
 }
 
 interface SignInProps {
