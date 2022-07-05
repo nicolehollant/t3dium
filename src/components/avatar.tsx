@@ -12,31 +12,33 @@ const Avatar: FC<{
 
   if (image) {
     return (
-      <Image
-        alt=""
-        src={image}
-        className={`${
+      <div
+        className={
           {
             base: 'h-10 w-10',
             sm: 'h-8 w-8',
             xs: 'h-6 w-6',
-          }[size]
-        } rounded-full border border-transparent shadow group-hover:border-emerald-200 group-hover:shadow-lg group-hover:ring group-hover:ring-emerald-600/75`}
-      />
+          }[size] +
+          ' relative overflow-hidden rounded-full border border-transparent shadow group-hover:border-emerald-200 group-hover:shadow-lg group-hover:ring group-hover:ring-emerald-600/75'
+        }
+      >
+        <Image alt="" layout="fill" src={image} />
+      </div>
     )
   }
   return (
-    <Image
-      alt=""
-      src={`data:image/svg+xml;utf8,${svg}`}
-      className={`${
+    <div
+      className={
         {
           base: 'h-10 w-10',
           sm: 'h-8 w-8',
           xs: 'h-6 w-6',
-        }[size]
-      } rounded-full border border-transparent shadow group-hover:border-emerald-200 group-hover:shadow-lg group-hover:ring group-hover:ring-emerald-600/75`}
-    />
+        }[size] +
+        ' relative overflow-hidden rounded-full border border-transparent shadow group-hover:border-emerald-200 group-hover:shadow-lg group-hover:ring group-hover:ring-emerald-600/75'
+      }
+    >
+      <Image alt="" src={`data:image/svg+xml;utf8,${svg}`} layout="fill" />
+    </div>
   )
 }
 

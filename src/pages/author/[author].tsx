@@ -34,11 +34,9 @@ const Post: NextPage = () => {
           <div className="flex items-center justify-between border-b border-b-gray-400 bg-emerald-200/60 py-6 px-4 backdrop-blur backdrop-filter">
             <div className="flex items-center gap-2">
               {authorInfo.data?.image && (
-                <Image
-                  alt=""
-                  src={authorInfo.data.image}
-                  className="h-6 w-6 rounded-full shadow"
-                />
+                <div className="relative h-6 w-6 overflow-hidden rounded-full shadow">
+                  <Image alt="" layout="fill" src={authorInfo.data.image} />
+                </div>
               )}
               <p className="text-lg">{authorInfo.data?.name}</p>
             </div>
