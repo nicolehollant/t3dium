@@ -80,7 +80,7 @@ const ViewPost: NextPage = () => {
           </div>
         </AppHeader>
         {post.isSuccess && (
-          <div className="max-w-screen mx-auto break-words py-12 px-6">
+          <div className="mx-auto max-w-[100vw] break-words py-12 px-6">
             <article className="mx-auto max-w-prose">
               <h2 className="text-7xl">{post.data.title}</h2>
               <p className="mt-6 ml-2 border-l-2 border-emerald-200/50 pl-4 text-lg italic text-gray-500">
@@ -102,7 +102,7 @@ const ViewPost: NextPage = () => {
               </div>
               <hr className="my-12" />
               <MarkdownPreview
-                className="prose prose-lg"
+                className="prose prose-sm sm:prose-base md:prose-lg"
                 value={removeHeaderIfDuplicate(post)}
               />
             </article>
