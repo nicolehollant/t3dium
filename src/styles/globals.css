@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, body {
+  --toastify-color-light: #ecfdf5;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #059669e0;
+  --toastify-color-warning: #fbbf24e0;
+  --toastify-color-error: #e11d48e0;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-text-color-info: #ffffffe0;
+  --toastify-text-color-success: #ffffffe0;
+  --toastify-text-color-warning: #ffffffe0;
+  --toastify-text-color-error: #ffffffe0;
+}
