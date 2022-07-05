@@ -75,7 +75,7 @@ const PostEditor: FC<Props> = ({
         <MarkdownEditor
           minHeight="10rem"
           maxHeight="50vh"
-          className="overflow-hidden rounded-lg border border-gray-300 text-lg shadow-sm transition duration-200 focus-within:border-emerald-600 focus-within:ring focus-within:ring-emerald-500 focus-within:ring-opacity-50 hover:shadow-md focus:border-emerald-600 focus:ring  focus:ring-emerald-500 focus:ring-opacity-50"
+          className="overflow-hidden rounded-lg border border-gray-300 text-lg shadow-sm transition duration-200 focus-within:border-emerald-600 focus-within:ring focus-within:ring-emerald-500 focus-within:ring-opacity-50 hover:shadow-md focus:border-emerald-600 focus:ring focus:ring-emerald-500  focus:ring-opacity-50"
           value={content}
           onChange={handleDocChange}
         />

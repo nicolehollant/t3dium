@@ -82,11 +82,13 @@ const ViewPost: NextPage = () => {
         {post.isSuccess && (
           <div className="mx-auto max-w-[100vw] break-words py-12 px-6">
             <article className="mx-auto max-w-prose">
-              <h2 className="text-7xl">{post.data.title}</h2>
-              <p className="mt-6 ml-2 border-l-2 border-emerald-200/50 pl-4 text-lg italic text-gray-500">
+              <h2 className="text-3xl font-semibold md:text-5xl lg:text-7xl">
+                {post.data.title}
+              </h2>
+              <p className="mt-4 ml-2 border-l-2 border-emerald-200/50 pl-4 italic text-gray-500 sm:mt-6 sm:text-lg">
                 {post.data.tagline}
               </p>
-              <div className="mt-6 flex items-center gap-4">
+              <div className="mt-4 flex items-center gap-4 sm:mt-6">
                 <AuthorPreview
                   name={post.data.author.name}
                   asLink={true}
@@ -95,12 +97,12 @@ const ViewPost: NextPage = () => {
                   largeName={true}
                   size="base"
                 />
-                <span className="text-gray-400">&middot;</span>
-                <time className="text-sm text-gray-600">
+                <span className="text-gray-300">&middot;</span>
+                <time className="text-xs text-gray-600 sm:text-sm">
                   {dayjs(post.data.createTime).format('l')}
                 </time>
               </div>
-              <hr className="my-12" />
+              <hr className="my-8 sm:my-12" />
               <MarkdownPreview
                 className="prose prose-sm sm:prose-base md:prose-lg"
                 value={removeHeaderIfDuplicate(post)}

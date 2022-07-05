@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import PostPreview from '../../components/post-preview'
 import LoadingPageShell from '../../components/loading-page-shell'
 import Image from 'next/image'
+import AuthorPreview from '../../components/author-preview'
 
 const Post: NextPage = () => {
   const router = useRouter()
@@ -32,14 +33,14 @@ const Post: NextPage = () => {
       <div className="flex flex-col">
         <AppHeader>
           <div className="flex items-center justify-between border-b border-b-gray-400 bg-emerald-200/60 py-6 px-4 backdrop-blur backdrop-filter">
-            <div className="flex items-center gap-2">
-              {authorInfo.data?.image && (
-                <div className="relative h-6 w-6 overflow-hidden rounded-full shadow">
-                  <Image alt="" layout="fill" src={authorInfo.data.image} />
-                </div>
-              )}
-              <p className="text-lg">{authorInfo.data?.name}</p>
-            </div>
+            <AuthorPreview
+              size="sm"
+              id={authorInfo.data?.id!}
+              image={authorInfo.data?.image}
+              asLink={false}
+              largeName={true}
+              name={authorInfo.data?.name}
+            />
           </div>
         </AppHeader>
         <div className="m-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

@@ -15,7 +15,7 @@ const Avatar: FC<{
       <div
         className={
           {
-            base: 'h-10 w-10',
+            base: 'h-8 w-8 sm:h-10 sm:w-10',
             sm: 'h-8 w-8',
             xs: 'h-6 w-6',
           }[size] +
@@ -30,7 +30,7 @@ const Avatar: FC<{
     <div
       className={
         {
-          base: 'h-10 w-10',
+          base: 'h-8 w-8 sm:h-10 sm:w-10',
           sm: 'h-8 w-8',
           xs: 'h-6 w-6',
         }[size] +

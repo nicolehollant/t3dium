@@ -19,11 +19,13 @@ const Home: NextPage = () => {
       </Head>
       <div className="flex min-h-screen flex-col">
         <AppHeader>
-          <div className="flex items-center justify-between border-b border-b-gray-400 bg-emerald-200/60 py-12 px-4 backdrop-blur backdrop-filter">
-            <p className="text-xl">quick blog made with the T3 stack</p>
+          <div className="flex items-center justify-between gap-8 border-b border-b-gray-400 bg-emerald-200/60 py-8 px-4 backdrop-blur backdrop-filter sm:py-12">
+            <p className="text-lg sm:text-xl">
+              quick blog made with the T3 stack
+            </p>
             {status === 'authenticated' && (
               <Link href="/post">
-                <a className="rounded-lg bg-emerald-600 px-2 py-1 text-base font-semibold text-emerald-50">
+                <a className="shrink-0 rounded-lg bg-emerald-600 px-2 py-1 text-base font-semibold text-emerald-50">
                   Create Post
                 </a>
               </Link>
